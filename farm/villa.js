@@ -30,6 +30,14 @@ var cerdo = {
     row_col: 13,
     space: 35
 };
+var persona = {
+    name: 'Persona',
+    url: "persona.png",
+    cargaOK: false,
+    qty: 1,
+    row_col: 13,
+    space: 35
+};
 
 fondo.imagen = new Image();
 fondo.imagen.src = fondo.url;
@@ -47,13 +55,9 @@ cerdo.imagen = new Image();
 cerdo.imagen.src = cerdo.url;
 cerdo.imagen.addEventListener("load", cargarCerdo);
 
-// var pollo = new Image();
-// pollo.src = "pollo.png";
-// pollo.addEventListener("load", cargarPollos);
-
-// var cerdo = new Image();
-// cerdo.src = "cerdo.png";
-// cerdo.addEventListener("load", cargarCerdos);
+persona.imagen = new Image();
+persona.imagen.src = persona.url;
+persona.imagen.addEventListener("load", cargarPersona);
 
 function cargarFondo()
 {
@@ -75,6 +79,11 @@ function cargarCerdo()
     cerdo.cargaOK = true;
     dibujar();
 }
+function cargarPersona()
+{
+    persona.cargaOK = true;
+    dibujar();
+}
 function dibujar()
 {   
     if(fondo.cargaOK)
@@ -93,6 +102,10 @@ function dibujar()
     if(cerdo.cargaOK)
     {
         dibujarAnimal(cerdo)
+    }
+    if(persona.cargaOK)
+    {
+        dibujarAnimal(persona)
     }
 }
 function dibujarAnimal(obj)
