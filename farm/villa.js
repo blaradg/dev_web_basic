@@ -36,7 +36,10 @@ var persona = {
     cargaOK: false,
     qty: 1,
     row_col: 13,
-    space: 35
+    space: 35,
+    x: 210,
+    y: 200,
+    paso: 10,
 };
 
 fondo.imagen = new Image();
@@ -59,6 +62,57 @@ persona.imagen = new Image();
 persona.imagen.src = persona.url;
 persona.imagen.addEventListener("load", cargarPersona);
 
+document.addEventListener("keydown", eventoMove);
+
+function eventoMove(event)
+{
+    console.log(event.keyCode)
+    // console.log(persona.imagen)
+    switch(event.keyCode)
+    {
+        case 37:
+            console.log("izquierda");
+            dibujar()
+            persona.x -= persona.paso;
+            if(persona.x < -80)
+            {
+                persona.x = 500;
+            }
+            papel.drawImage(persona.imagen, persona.x, persona.y);
+            break;
+        case 38:
+            console.log("arriba")
+            dibujar()
+            persona.y -= persona.paso;
+            if(persona.y < -100)
+            {
+                persona.y = 500;
+            }
+            papel.drawImage(persona.imagen, persona.x, persona.y);
+            break;
+        case 39:
+            console.log("derecha")
+            dibujar()
+            persona.x += persona.paso;
+            if(persona.x > 500)
+            {
+                persona.x = -80;
+            }
+            papel.drawImage(persona.imagen, persona.x, persona.y);
+            break;
+        case 40:
+            console.log("abajo")
+            dibujar()
+            persona.y += persona.paso;
+            if(persona.y > 500)
+            {
+                persona.y = -100;
+            }
+            papel.drawImage(persona.imagen, persona.x, persona.y);
+            break;
+    }
+    console.log(persona.x, persona.y)
+}
 function cargarFondo()
 {
     fondo.cargaOK = true;
@@ -91,22 +145,22 @@ function dibujar()
         console.log('Entrooo');
         papel.drawImage(fondo.imagen, 0, 0);
     }
-    if(vaca.cargaOK)
-    {
-        dibujarAnimal(vaca);
-    }
-    if(pollo.cargaOK)
-    {
-        dibujarAnimal(pollo)
-    }
-    if(cerdo.cargaOK)
-    {
-        dibujarAnimal(cerdo)
-    }
-    if(persona.cargaOK)
-    {
-        dibujarAnimal(persona)
-    }
+    // if(vaca.cargaOK)
+    // {
+    //     dibujarAnimal(vaca);
+    // }
+    // if(pollo.cargaOK)
+    // {
+    //     dibujarAnimal(pollo)
+    // }
+    // if(cerdo.cargaOK)
+    // {
+    //     dibujarAnimal(cerdo)
+    // }
+    // if(persona.cargaOK)
+    // {
+    //     dibujarAnimal(persona)
+    // }
 }
 function dibujarAnimal(obj)
 {
