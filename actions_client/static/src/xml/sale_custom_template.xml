@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="SaleCust">
+        <div>
+            <div>
+                <h3>
+                    Sale Custom
+                </h3>
+            </div>
+            <div>
+                <div class="filter_view_tb"></div>
+            </div>
+            <br/>
+            <div>
+                <div class="table_view"></div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SaleTable">
+        <div>
+            <div class="table_main_view">
+                <table cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Numero</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="report_lines" t-as="data">
+                            <tr style="border: 1px solid black;">
+                                <td style="border: 0px solid black;">
+                                    <t t-esc="data['name']"/>
+                                </td>
+                                <td style="border: 0px solid black;">
+                                    <t t-esc="data['customer']"/>
+                                </td>
+                                <td style="border: 0px solid black;">
+                                    <t t-esc="data['amount_total']"/>
+                                </td>
+                                <td style="border: 0px solid black;">
+                                    <t t-esc="data['state']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>
